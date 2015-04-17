@@ -31,6 +31,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Self-explanatory
+  gem 'better_errors'
+  # Adds Better Errors' advanced features (REPL, local/instance variable inspection, pretty stack frame names)
+  gem 'binding_of_caller'
+
+  # Prints Ruby objects in full color exposing their internal structure with proper indentation.
+  gem 'awesome_print'
+  # Use table_print to get a cleaner overall view of a table.
+  gem 'table_print'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
