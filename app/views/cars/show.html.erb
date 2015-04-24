@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @car.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @car.year %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @car.color %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @car.nickname %>
+</p>
+
+<p>
+  <strong>License plate number:</strong>
+  <%= @car.license_plate_number %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @car.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @car.latitude %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @car.user %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
