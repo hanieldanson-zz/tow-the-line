@@ -8,7 +8,7 @@
 
 # User seeds
 
-admin = User.create(email:"admin@admin.admin", password:"1234")
+admin = Admin.create(email:"a", password:"1234")
 
 users = [ john = { email:"johnschulz75@gmail.com", password:"1234567890", password_confirmation: "1234567890" },
 					dan = { email:"hanson.e.daniel@gmail.com", password:"1234567890" },

@@ -1,14 +1,41 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>TowTheLine</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
+	<head>
+	  <title>Tow_the_Line</title>
+	  <%= stylesheet_link_tag    'application', media: 'all' %>
+	  <%= javascript_include_tag 'application' %>
+	  <%= csrf_meta_tags %>
+	</head>
 <body>
+		<% if flash %>
+			<div class="container">
+				<div class="col-md-6 col-md-offset-3">
+			  	<% if flash[:alert] %>
+			    	<div class="alert alert-dismissible alert-danger">
+			      	<button type="button" class="close" data-dismiss="alert">×</button>
+			      	<%= flash[:alert] %>
+		      	</div>
+		    	<% elsif flash[:notice] %>
+			      <div class="alert alert-dismissible alert-info">
+				      <button type="button" class="close" data-dismiss="alert">×</button>
+			  	    <%= flash[:notice] %>
+			    	</div>
+		    	<% end %>
+		  	</div>
+			</div>
+		<% end %>
 
-<%= yield %>
+		<p>Logged in: <%= current_user.email if current_user %></p>
+		<%= yield %>
+	  
+	<% if current_user %>
+	  <footer>
+	  	<%= link_to 'Logout', logout_path %>
+	  </footer>
+	<% else %>
+		<footer>
+			<%= link_to 'New User', new_user_path %>
+		</footer>
+	<% end %>
 
 </body>
 </html>
