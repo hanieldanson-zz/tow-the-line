@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <% if logged_in? %>
-  <h1>Listing Users</h1>
+  <h1>This should be a map, centered on current location.</h1>
 
   <table>
     <thead>
@@ -18,17 +18,17 @@
         <tr>
           <td><%= user.email %></td>
           <td><%= user.password_digest %></td>
-          <td><%= user.sms.gsub("Sms","SMS") %></td>
+          <td><%= user.sms %></td>
           <td><%= user.username %></td>
           <td><%= link_to 'Show', user %></td>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% unless user == current_user %>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% else %>
-  <%= link_to 'Login', users_login_path %>
-  <%= link_to 'New User', new_user_path %>
+  <%= link_to 'Login', login_path %><br>
 <% end %>
-

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  get 'users/login' => 'users#login'
-  get 'users/logout' => 'users#logout'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   resources :users do
     resources :cars

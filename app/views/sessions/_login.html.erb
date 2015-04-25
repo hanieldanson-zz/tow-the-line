@@ -1,0 +1,20 @@
+<h2>Login</h2>
+<br><br>
+
+<%= form_for '/login' do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<h1><%= label_tag :email %></h1>
+  <%= text_field_tag :email %>
+	<h1><%= label_tag :password %></h1>
+  <%= password_field_tag :password %>
+  <h1><%= submit_tag "Login" %></h1>
+<% end %>
