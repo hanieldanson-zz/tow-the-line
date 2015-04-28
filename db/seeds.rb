@@ -13,13 +13,22 @@ admin = Admin.create(email:"a", password:"1234")
 users = [ john = { email:"johnschulz75@gmail.com", password:"1234567890", password_confirmation: "1234567890" },
 					dan = { email:"hanson.e.daniel@gmail.com", password:"1234567890" },
 					test1 = { email:"a@a.ab", password:"1234567890" },
-					test2 = { email:"should_fail", password:"1234567890" },
-					test3 = { email:"should_fail@should_fail", password:"1234567890" },
-					test4 = { email:"should_fail@should_fail.s", password:"1234567890" },
-					test5 = { email:".should_fail@should_fail.should_fail", password:"1234567890" },
-					test6 = { email:"should_fail@should_fail.s", password:"1234567890" } ]
+					test2 = { email:"b@a.ab", password:"1234567890", password_confirmation: "1234567890" },
+					failure1 = { email:"should@should.fail", password:"1234567890", password_confirmation: "fail" },
+					failure2 = { email:"should_fail", password:"1234567890" },
+					failure3 = { email:"should_fail@should_fail", password:"1234567890" },
+					failure4 = { email:"should_fail@should_fail.s", password:"1234567890" },
+					failure5 = { email:".should_fail@should_fail.should_fail", password:"1234567890" },
+					failure6 = { email:"_should_fail@should_fail.should_fail", password:"1234567890" },
+					failure7 = { email:"$should_fail@should_fail.should_fail", password:"1234567890" },
+					failure8 = { email:"()should_fail@should_fail.should_fail", password:"1234567890" } ]
 
 users.each_with_index do |user, i|
 	temp = User.new(user)
-	puts "User \##{i + 1} created with email - #{user[:email]}" if temp.save
+	if temp.save
+		puts "User \##{i + 1} created with email - #{user[:email]}"
+	else
+		puts "User \##{i + 1} not created with email - #{user[:email]}"
+	end
 end
+
