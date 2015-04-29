@@ -10,7 +10,7 @@
       <th>Year</th>
       <th>Color</th>
       <th>Nickname</th>
-      <th>License plate number</th>
+      <th>License Plate Number</th>
       <th>Longitude</th>
       <th>Latitude</th>
       <th>User</th>
@@ -30,14 +30,11 @@
         <td><%= car.longitude %></td>
         <td><%= car.latitude %></td>
         <td><%= car.user %></td>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_user_car_path(id: car.id) %></td>
+        <td><%= link_to 'Destroy', user_car_path(id: car.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Car', new_car_path %>

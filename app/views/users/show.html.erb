@@ -20,4 +20,16 @@
   <%= @user.username %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<p>
+	<strong>Cars:</strong>
+	<% current_user.cars.each do |car| %>
+		<p>
+			<span><%= car.year %> <%= car.color %> <%= car.make %> <%= car.model %></span>
+			<% if car.nickname %>
+				<span>, named '<%= car.nickname %>'</span>
+			<% end %>
+		</p>
+	<% end %>
+</p>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %> | <%= link_to 'Edit Cars', user_cars_path(@user) %>

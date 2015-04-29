@@ -1,4 +1,3 @@
-<%= form_for(@car) do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -43,11 +42,6 @@
     <%= f.label :latitude %><br>
     <%= f.text_field :latitude %>
   </div>
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Car" %>
   </div>
-<% end %>

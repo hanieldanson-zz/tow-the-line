@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150425000854) do
     t.string   "license_plate_number"
     t.float    "longitude"
     t.float    "latitude"
+    t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
