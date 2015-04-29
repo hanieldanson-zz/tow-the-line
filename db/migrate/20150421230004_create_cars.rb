@@ -9,6 +9,7 @@ class CreateCars < ActiveRecord::Migration
       t.string :license_plate_number
       t.float :longitude
       t.float :latitude
+      t.references :user
 
       t.timestamps null: false
     end

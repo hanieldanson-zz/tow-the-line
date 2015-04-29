@@ -1,6 +1,7 @@
 <h1>Editing Car</h1>
+<%= form_for @car, url: user_car_path do |f| %>
+	<%= render 'form', :f => f %>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @car %> |
-<%= link_to 'Back', cars_path %>
+<%= link_to 'Show', user_car_path %> |
+<%= link_to 'Back', user_cars_path %>

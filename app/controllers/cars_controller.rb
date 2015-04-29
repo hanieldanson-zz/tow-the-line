@@ -27,28 +27,21 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
 
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
-        format.json { render :show, status: :created, location: @car }
-      else
-        format.html { render :new }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.save
+      current_user.cars << @car
+      redirect_to user_cars_path, notice: 'Car was successfully created.'
+    else
+      redirect_to new_user_car_path
     end
   end
 
   # PATCH/PUT /cars/1
   # PATCH/PUT /cars/1.json
   def update
-    respond_to do |format|
-      if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-        format.json { render :show, status: :ok, location: @car }
-      else
-        format.html { render :edit }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.update(car_params)
+      redirect_to user_cars_path, notice: 'Car was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -57,7 +50,7 @@ class CarsController < ApplicationController
   def destroy
     @car.destroy
     respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
+      format.html { redirect_to user_cars_url, notice: 'Car was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,8 +61,13 @@ class CarsController < ApplicationController
       @car = Car.find(params[:id])
     end
 
+    def set_nickname
+      params[:car][:nickname] = "#{params[:car][:year].to_s} #{params[:car][:make]} #{params[:car][:model]}" if params[:car][:nickname].empty?
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
+      set_nickname
       params.require(:car).permit(:make, :model, :year, :color, :nickname, :license_plate_number, :longitude, :latitude, :user)
     end
 end
